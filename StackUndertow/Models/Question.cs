@@ -11,6 +11,7 @@ namespace StackUndertow.Models
         public int Id { get; set; }
         public string Title { get; set; }
         public string QuestionText { get; set; }
+        public DateTime Created { get; set; }
 
         public virtual ICollection<Answer> Answers { get; set; }
 

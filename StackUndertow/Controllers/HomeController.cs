@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StackUndertow.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,8 +9,11 @@ namespace StackUndertow.Controllers
 {
     public class HomeController : Controller
     {
+        private ApplicationDbContext db = new ApplicationDbContext();
+
         public ActionResult Index()
         {
+            ViewBag.Questions = db.Questions.OrderByDescending(o => o.Created).ToList();
             return View();
         }
 
