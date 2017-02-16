@@ -39,6 +39,22 @@ namespace StackUndertow.Controllers
             return View(question);
         }
 
+        [HttpPost]
+        [ActionName("Details")]
+        public ActionResult DetailsPost(int? id2)
+        {
+            
+            Vote vote = new Vote();
+
+            ViewBag.ID = id2;
+            vote.AnswerId = ViewBag.ID;
+            vote.OwnerId = User.Identity.GetUserId();
+            db.Votes.Add(vote);
+            db.SaveChanges();
+
+            return View();
+        }
+
         // GET: Question/Create
         public ActionResult Create()
         {

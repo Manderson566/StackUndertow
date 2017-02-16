@@ -51,8 +51,8 @@ namespace StackUndertow.Controllers
         {
             if (ModelState.IsValid)
             {
-                int id = answer.QuestionId;
-                ViewBag.UserQuestionA = db.Questions.Where(q => q.Id == id).ToList();
+                int aid = answer.QuestionId;
+                ViewBag.UserQuestionA = db.Questions.Where(q => q.Id == aid).ToList();
                 db.Answers.Add(answer);
                 answer.Created = DateTime.Now;
                 answer.OwnerId = User.Identity.GetUserId();
