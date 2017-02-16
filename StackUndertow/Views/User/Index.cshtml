@@ -6,3 +6,34 @@
 <h2>Index</h2>
 
 <h1>Test</h1>
+
+<div class="container">
+    @using (Html.BeginForm())
+    {
+        foreach (var question in ViewBag.UserQuestions)
+        {
+            <div id="LeftColumn" style="float: Left; padding-left: 50px;">
+                <table class="table table-responsive">
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>UserName</th>
+                            <th>Created</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>@Html.ActionLink((string)question.Title, "Details", "Home", new { @class = "text-default" }, new { })</td>
+                            <td>@question.Owner.UserName</td>
+                            <td>@question.Created</td>
+
+
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        }
+
+    }
+</div>

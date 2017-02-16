@@ -19,8 +19,8 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>@Html.ActionLink((string)question.Title, "Details", "Home", new { @class = "text-default" }, new { })</td>
-                            <td>@question.Owner.UserName</td>
+                            <td>@Html.ActionLink((string)question.Title, "Details", "Question", new { id = question.Id }, new {@class="text-default" })</td>
+                            <td>@Html.RouteLink((string)question.Owner.UserName, new {UserName = question.Owner.UserName })</td>
                             <td>@question.Created</td>
                             
 

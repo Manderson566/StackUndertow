@@ -17,6 +17,7 @@ namespace StackUndertow.Controllers
         public ActionResult Index(string UserName)
         {
             ApplicationUser userInstance = db.Users.Where(u => u.UserName == UserName).FirstOrDefault();
+            ViewBag.UserQuestions = db.Questions.Where(u => u.Owner.UserName == UserName).ToList().OrderByDescending(o => o.Created);
             return View(userInstance);
         }
     }

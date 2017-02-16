@@ -35,6 +35,7 @@ namespace StackUndertow.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.QAnswers = db.Answers.Where(a => a.QuestionId == id).ToList();
             return View(question);
         }
 

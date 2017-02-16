@@ -212,6 +212,10 @@
     <Compile Include="Migrations\201702152250269_createdToQuestionandAnswer.Designer.cs">
       <DependentUpon>201702152250269_createdToQuestionandAnswer.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201702160141010_AddedQAnswertoAnswerModel.cs" />
+    <Compile Include="Migrations\201702160141010_AddedQAnswertoAnswerModel.Designer.cs">
+      <DependentUpon>201702160141010_AddedQAnswertoAnswerModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Answer.cs" />
@@ -292,7 +296,6 @@
     <Content Include="Views\Answer\Index.cshtml" />
     <Content Include="Views\User.cshtml" />
     <Content Include="Views\User\Index.cshtml" />
-    <Content Include="Views\Home\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -311,6 +314,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201702152250269_createdToQuestionandAnswer.resx">
       <DependentUpon>201702152250269_createdToQuestionandAnswer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702160141010_AddedQAnswertoAnswerModel.resx">
+      <DependentUpon>201702160141010_AddedQAnswertoAnswerModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

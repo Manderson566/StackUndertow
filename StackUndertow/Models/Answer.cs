@@ -9,6 +9,7 @@ namespace StackUndertow.Models
     public class Answer
     {
         public int Id { get; set; }
+        public string QAnswer { get; set; }
         public DateTime Created { get; set; }
         public virtual ICollection<Vote> Votes { get; set; }
 

@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using StackUndertow.Models;
+using Microsoft.AspNet.Identity;
 
 namespace StackUndertow.Controllers
 {
@@ -37,23 +38,24 @@ namespace StackUndertow.Controllers
         }
 
         // GET: Answer/Create
-        public ActionResult Create()
+        public ActionResult Create(int? id)
         {
-            ViewBag.OwnerId = new SelectList(db.Users, "Id", "Email");
-            ViewBag.QuestionId = new SelectList(db.Questions, "Id", "Title");
+          ViewBag.UserQuestionA = db.Questions.Where(q => q.Id == id).ToList();
+            ViewBag.QuestionId = id;
             return View();
         }
 
-        // POST: Answer/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,QuestionId,OwnerId")] Answer answer)
+        public ActionResult Create([Bind(Include = "Id,QuestionId,OwnerId,QAnswer")] Answer answer)
         {
             if (ModelState.IsValid)
             {
+                int id = answer.QuestionId;
+                ViewBag.UserQuestionA = db.Questions.Where(q => q.Id == id).ToList();
                 db.Answers.Add(answer);
+                answer.Created = DateTime.Now;
+                answer.OwnerId = User.Identity.GetUserId();
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
