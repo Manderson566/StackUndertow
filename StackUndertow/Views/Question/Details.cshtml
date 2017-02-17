@@ -3,7 +3,6 @@
 @{
     ViewBag.Title = "Details";
 }
-
 <h2>Details</h2>
 
 <div>
@@ -33,6 +32,8 @@
         <dd>
             @Html.DisplayFor(model => model.QuestionText)
         </dd>
+        @Html.HiddenFor(model => model.Id, new { id = Model.Id })
+
 
     </dl>
 </div>
@@ -40,41 +41,43 @@
 
     @Html.ActionLink("Back to Home", "Index") |
     @Html.ActionLink("Answer Question", "Create", "Answer", new { id = Model.Id }, new { })
-        
-        
 
 
 
 
-        
-        <div class="container">
-            @using (Html.BeginForm())
+
+
+    
+    <div class="container">
+
+        @foreach (var answer in Model.Answers.OrderByDescending(o => o.Votes.Count))
+        {
+            using (Html.BeginForm("Vote", "Question", new { Aid = answer.Id }))
             {
-                foreach (var answer in ViewBag.QAnswers)
-                {
-                    <div id="LeftColumn" style="float: Left; padding-left: 50px;">
-                        <table class="table table-responsive">
-                            <thead>
-                                <tr>
-                                    <th>Answer</th>
-                                    <th>UserName</th>
-                                    <th>Created</th>
-                                    <th></th>
+                <div id="LeftColumn" style="float: Left; padding-left: 50px;">
+                    <table class="table table-responsive">
+                        <thead>
+                            <tr>
+                                <th>Answer</th>
+                                <th>UserName</th>
+                                <th>Created</th>
+                                <th></th>
 
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>@answer.QAnswer</td>
-                                    <td>@Html.RouteLink((string)answer.Owner.UserName, new { UserName = answer.Owner.UserName })</td>
-                                    <td>@answer.Created</td>
-                                    <td>@Html.ActionLink("Like", "Details", "Question", new { id2 = answer.Id }, new { })</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                }
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>@answer.QAnswer</td>
+                                <td>@Html.RouteLink((string)answer.Owner.UserName, new { UserName = answer.Owner.UserName })</td>
+                                <td>@answer.Created</td>
+
+                                <td><input type="submit" value="Submit Answer" class="btn btn-default" />
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             }
-      
-            
-        </div>
+        }
+
+
+    </div>

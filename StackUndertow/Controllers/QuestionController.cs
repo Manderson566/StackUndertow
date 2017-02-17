@@ -11,9 +11,10 @@ using Microsoft.AspNet.Identity;
 
 namespace StackUndertow.Controllers
 {
-    [Authorize]
     public class QuestionController : Controller
     {
+        public Question question;
+
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Question
@@ -30,7 +31,7 @@ namespace StackUndertow.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Question question = db.Questions.Find(id);
+            question = db.Questions.Find(id);
             if (question == null)
             {
                 return HttpNotFound();
@@ -39,20 +40,19 @@ namespace StackUndertow.Controllers
             return View(question);
         }
 
-        [HttpPost]
-        [ActionName("Details")]
-        public ActionResult DetailsPost(int? id2)
-        {
-            
-            Vote vote = new Vote();
 
-            ViewBag.ID = id2;
-            vote.AnswerId = ViewBag.ID;
+        [HttpPost]
+        [Authorize]
+        [Route("Details{id}")]
+        public ActionResult Vote(int Aid, int? id)
+        {
+            Vote vote = new Vote();
             vote.OwnerId = User.Identity.GetUserId();
+            vote.AnswerId = Aid;
             db.Votes.Add(vote);
             db.SaveChanges();
 
-            return View();
+            return RedirectToAction("Details", new { id = id });
         }
 
         // GET: Question/Create

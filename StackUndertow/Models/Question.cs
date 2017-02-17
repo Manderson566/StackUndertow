@@ -13,7 +13,7 @@ namespace StackUndertow.Models
         public string QuestionText { get; set; }
         public DateTime Created { get; set; }
 
-        public virtual ICollection<Answer> Answers { get; set; }
+        public virtual ICollection<Answer> Answers { get; set; } //foreach
 
         public string OwnerId { get; set; }
         [ForeignKey("OwnerId")]
