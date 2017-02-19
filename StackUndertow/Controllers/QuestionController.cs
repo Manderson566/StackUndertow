@@ -25,7 +25,7 @@ namespace StackUndertow.Controllers
         }
 
         // GET: Question/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult Details(int? id, int? Aid)
         {
             if (id == null)
             {
@@ -37,20 +37,45 @@ namespace StackUndertow.Controllers
                 return HttpNotFound();
             }
             ViewBag.QAnswers = db.Answers.Where(a => a.QuestionId == id).ToList();
+            string currentUser = User.Identity.GetUserId();
+    
             return View(question);
         }
 
 
-        [HttpPost]
         [Authorize]
-        [Route("Details{id}")]
-        public ActionResult Vote(int Aid, int? id)
+        [HttpPost]
+        public ActionResult UpVote(int Aid, int? id)
         {
+           
+
             Vote vote = new Vote();
+       
+            vote.UpVote = 1;
             vote.OwnerId = User.Identity.GetUserId();
             vote.AnswerId = Aid;
+            vote.Created = DateTime.Now;
             db.Votes.Add(vote);
             db.SaveChanges();
+
+            return RedirectToAction("Details", new { id = id, Aid = Aid });
+
+        }
+        [Authorize]
+        [HttpPost]
+        public ActionResult DownVote(int Aid, int? id)
+        {
+            
+
+            Vote vote = new Vote();
+          
+            vote.DownVote = 1;
+            vote.OwnerId = User.Identity.GetUserId();
+            vote.AnswerId = Aid;
+            vote.Created = DateTime.Now;
+            db.Votes.Add(vote);
+            db.SaveChanges();
+
 
             return RedirectToAction("Details", new { id = id });
         }

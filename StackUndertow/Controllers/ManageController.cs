@@ -7,12 +7,14 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using StackUndertow.Models;
+using System.IO;
 
 namespace StackUndertow.Controllers
 {
     [Authorize]
     public class ManageController : Controller
     {
+        ApplicationDbContext db = new ApplicationDbContext();
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
@@ -320,6 +322,32 @@ namespace StackUndertow.Controllers
             }
             var result = await UserManager.AddLoginAsync(User.Identity.GetUserId(), loginInfo.Login);
             return result.Succeeded ? RedirectToAction("ManageLogins") : RedirectToAction("ManageLogins", new { Message = ManageMessageId.Error });
+        }
+
+        public ActionResult Upload()
+        {
+            var uploadViewModel = new ImageUploadViewModel();
+            return View(uploadViewModel);
+        }
+
+        [HttpPost]
+        public ActionResult Upload(ImageUploadViewModel formData)
+        {
+            var uploadedFile = Request.Files[0];
+            string filename = $"{DateTime.Now.Ticks} {uploadedFile.FileName}";
+            var serverPath = Server.MapPath(@"-\Uploads");
+            var fullpath = Path.Combine(serverPath, filename);
+            uploadedFile.SaveAs(fullpath);
+
+            var uploadModel = new ImageUpload
+            {
+                Caption = formData.Caption,
+                File = filename
+
+            };
+            db.ImageUploads.Add(uploadModel);
+            db.SaveChanges();
+            return View();
         }
 
         protected override void Dispose(bool disposing)

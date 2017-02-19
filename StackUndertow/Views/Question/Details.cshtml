@@ -32,7 +32,6 @@
         <dd>
             @Html.DisplayFor(model => model.QuestionText)
         </dd>
-        @Html.HiddenFor(model => model.Id, new { id = Model.Id })
 
 
     </dl>
@@ -47,37 +46,56 @@
 
 
 
-    
+
     <div class="container">
 
         @foreach (var answer in Model.Answers.OrderByDescending(o => o.Votes.Count))
         {
-            using (Html.BeginForm("Vote", "Question", new { Aid = answer.Id }))
-            {
-                <div id="LeftColumn" style="float: Left; padding-left: 50px;">
-                    <table class="table table-responsive">
-                        <thead>
-                            <tr>
-                                <th>Answer</th>
-                                <th>UserName</th>
-                                <th>Created</th>
-                                <th></th>
 
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>@answer.QAnswer</td>
-                                <td>@Html.RouteLink((string)answer.Owner.UserName, new { UserName = answer.Owner.UserName })</td>
-                                <td>@answer.Created</td>
 
-                                <td><input type="submit" value="Submit Answer" class="btn btn-default" />
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            }
+            <div id="LeftColumn" style="float: Left; padding-left: 50px;">
+                <table class="table table-responsive">
+                    <thead>
+                        <tr>
+                            <th>Answer</th>
+                            <th>UserName</th>
+                            <th>Created</th>
+                            <th></th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>@answer.QAnswer</td>
+                            <td>@Html.RouteLink((string)answer.Owner.UserName, new { UserName = answer.Owner.UserName })</td>
+                            <td>@answer.Created</td>
+                          
+                                @using (Html.BeginForm("DownVote", "Question", new { Aid = answer.Id }))
+                                {
+                                @Html.HiddenFor(model => model.Id, new { id = Model.Id })
+                                <td><input type="submit" value="▲" class="btn btn-default" /></td>
+                                }
+
+                           
+                                @using (Html.BeginForm("DownVote", "Question", new { Aid = answer.Id }))
+                                {
+                                @Html.HiddenFor(model => model.Id, new { id = Model.Id })
+                                <td><input type="submit" value="▼" class="btn btn-default" /></td>
+                                }
+                            
+
+
+
+
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         }
 
 
+
+
     </div>
+
+

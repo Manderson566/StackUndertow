@@ -9,6 +9,9 @@ namespace StackUndertow.Models
     public class Vote
     {
         public int Id { get; set; }
+        public int? UpVote { get; set; }
+        public int? DownVote { get; set; }
+        public DateTime Created { get; set; }
 
         public int AnswerId{ get; set; }
         [ForeignKey("AnswerId")]

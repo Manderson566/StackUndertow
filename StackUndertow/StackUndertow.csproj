@@ -216,10 +216,27 @@
     <Compile Include="Migrations\201702160141010_AddedQAnswertoAnswerModel.Designer.cs">
       <DependentUpon>201702160141010_AddedQAnswertoAnswerModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201702171643348_addedUpandDownVotesToVotecs.cs" />
+    <Compile Include="Migrations\201702171643348_addedUpandDownVotesToVotecs.Designer.cs">
+      <DependentUpon>201702171643348_addedUpandDownVotesToVotecs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201702171818114_AddedDateTimeToVote.cs" />
+    <Compile Include="Migrations\201702171818114_AddedDateTimeToVote.Designer.cs">
+      <DependentUpon>201702171818114_AddedDateTimeToVote.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201702171951021_AddedDateTimeToVote1.cs" />
+    <Compile Include="Migrations\201702171951021_AddedDateTimeToVote1.Designer.cs">
+      <DependentUpon>201702171951021_AddedDateTimeToVote1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201702192131599_addedmodelForImageUploads.cs" />
+    <Compile Include="Migrations\201702192131599_addedmodelForImageUploads.Designer.cs">
+      <DependentUpon>201702192131599_addedmodelForImageUploads.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Answer.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\ImageUpload.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Question.cs" />
     <Compile Include="Models\Vote.cs" />
@@ -299,6 +316,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Uploads\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -317,6 +335,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201702160141010_AddedQAnswertoAnswerModel.resx">
       <DependentUpon>201702160141010_AddedQAnswertoAnswerModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702171643348_addedUpandDownVotesToVotecs.resx">
+      <DependentUpon>201702171643348_addedUpandDownVotesToVotecs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702171818114_AddedDateTimeToVote.resx">
+      <DependentUpon>201702171818114_AddedDateTimeToVote.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702171951021_AddedDateTimeToVote1.resx">
+      <DependentUpon>201702171951021_AddedDateTimeToVote1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702192131599_addedmodelForImageUploads.resx">
+      <DependentUpon>201702192131599_addedmodelForImageUploads.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
