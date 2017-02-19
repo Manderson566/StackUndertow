@@ -1,0 +1,13 @@
+﻿@model IEnumerable<StackUndertow.Models.ImageUpload>
+
+@foreach (var upload in Model)
+{
+    <div class="row">
+        <div class="col-md-3">
+            <img class="thumb" src="@upload.FilePath" alt="@upload.Caption" />
+        </div>
+        <div class="col-md-9">
+            <h2>@upload.Caption</h2>
+        </div>
+    </div>
+}

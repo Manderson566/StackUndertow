@@ -1,0 +1,27 @@
+﻿@model StackUndertow.Models.ImageUploadViewModel
+@{
+    ViewBag.Title = "Upload";
+}
+
+<h2>Upload</h2>
+
+<div class="container">
+    <br />
+    <br />
+    <br />
+    @using (Html.BeginForm("Upload", "Manage", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <p>
+            @Html.EditorFor(u => u.Caption, new { @class = "form-control" })
+        </p>
+        <p>
+            <input type="file" name="File" class="form-control" />
+        </p>
+        <p>
+            <input type="submit" value="Upload File" class="btn btn-warning" />
+        </p>
+    }
+</div>
+
+
+ @Html.ActionLink("Choose Profile Image", "ImageSelect", "Manage" )

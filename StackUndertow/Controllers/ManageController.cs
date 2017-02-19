@@ -334,10 +334,10 @@ namespace StackUndertow.Controllers
         public ActionResult Upload(ImageUploadViewModel formData)
         {
             var uploadedFile = Request.Files[0];
-            string filename = $"{DateTime.Now.Ticks} {uploadedFile.FileName}";
-            var serverPath = Server.MapPath(@"-\Uploads");
-            var fullpath = Path.Combine(serverPath, filename);
-            uploadedFile.SaveAs(fullpath);
+            string filename = $"{DateTime.Now.Ticks}{uploadedFile.FileName}";
+            var serverPath = Server.MapPath(@"~\Uploads");
+            var fullPath = Path.Combine(serverPath, filename);
+            uploadedFile.SaveAs(fullPath);
 
             var uploadModel = new ImageUpload
             {
@@ -348,6 +348,11 @@ namespace StackUndertow.Controllers
             db.ImageUploads.Add(uploadModel);
             db.SaveChanges();
             return View();
+        }
+
+        public ActionResult ImageSelect()
+        {
+            return View(db.ImageUploads);
         }
 
         protected override void Dispose(bool disposing)

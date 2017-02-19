@@ -24,7 +24,7 @@ namespace StackUndertow.Models
         {
             get
             {
-                return $"/Uploads/{File}";
+                return $"~/Uploads/{File}";
             }
 
         }
