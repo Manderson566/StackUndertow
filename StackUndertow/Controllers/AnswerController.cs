@@ -115,6 +115,8 @@ namespace StackUndertow.Controllers
             }
             return View(answer);
         }
+
+
         public ActionResult Upload()
         {
             var uploadViewModel = new ImageUploadViewModel();
@@ -126,15 +128,16 @@ namespace StackUndertow.Controllers
         {
             var uploadedFile = Request.Files[0];
             string filename = $"{DateTime.Now.Ticks}{uploadedFile.FileName}";
-            var serverPath = Server.MapPath(@"~\Uploads\AnswersScreenshot");
+            var serverPath = Server.MapPath(@"~\Uploads\AnswerScreenshot");
             var fullPath = Path.Combine(serverPath, filename);
             uploadedFile.SaveAs(fullPath);
 
             var uploadModel = new ImageUpload
             {
                 Caption = formData.Caption,
-                File = filename
-
+                File = filename,
+                OwnerId = User.Identity.GetUserId(),
+                ImgType = "AnswerScreenshot"
             };
             db.ImageUploads.Add(uploadModel);
             db.SaveChanges();

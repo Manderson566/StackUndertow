@@ -240,6 +240,10 @@
     <Compile Include="Migrations\201702200143358_addedIcollectionOfImagesInAnswers.Designer.cs">
       <DependentUpon>201702200143358_addedIcollectionOfImagesInAnswers.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201702200312538_removedBoolProfilePicAddedImageType.cs" />
+    <Compile Include="Migrations\201702200312538_removedBoolProfilePicAddedImageType.Designer.cs">
+      <DependentUpon>201702200312538_removedBoolProfilePicAddedImageType.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Answer.cs" />
@@ -328,6 +332,7 @@
     <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\Manage\Upload.cshtml" />
     <Content Include="Views\Manage\ImageSelect.cshtml" />
+    <Content Include="Views\Answer\Upload.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -370,6 +375,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201702200143358_addedIcollectionOfImagesInAnswers.resx">
       <DependentUpon>201702200143358_addedIcollectionOfImagesInAnswers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702200312538_removedBoolProfilePicAddedImageType.resx">
+      <DependentUpon>201702200312538_removedBoolProfilePicAddedImageType.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

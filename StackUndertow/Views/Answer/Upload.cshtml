@@ -1,4 +1,11 @@
-﻿@model StackUndertow.Models.ImageUploadViewModel
+﻿
+@{
+    ViewBag.Title = "Upload";
+}
+
+<h2>Upload</h2>
+
+@model StackUndertow.Models.ImageUploadViewModel
 @{
     ViewBag.Title = "Upload";
 }
@@ -22,5 +29,4 @@
         </p>
     }
 </div>
-
- @Html.ActionLink("Choose Profile Image", "ImageSelect", "Manage" )
+@Html.ActionLink("Choose Profile Image", "ImageSelect", "Manage")

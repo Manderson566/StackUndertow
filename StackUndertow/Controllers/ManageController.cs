@@ -342,7 +342,9 @@ namespace StackUndertow.Controllers
             var uploadModel = new ImageUpload
             {
                 Caption = formData.Caption,
-                File = filename
+                File = filename,
+                OwnerId = User.Identity.GetUserId(),
+                ImgType = "ProfilePic"
 
             };
             db.ImageUploads.Add(uploadModel);

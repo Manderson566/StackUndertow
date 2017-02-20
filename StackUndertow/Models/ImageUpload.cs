@@ -21,7 +21,8 @@ namespace StackUndertow.Models
         public string Caption { get; set; }
         public string File { get; set; }
         public string OwnerId { get; set; }
-        public bool ProfilePic { get; set; }
+        public string ImgType { get; set; }
+        
 
         [ForeignKey("OwnerId")]
         public virtual ApplicationUser Owner { get; set; }
