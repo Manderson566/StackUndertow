@@ -8,6 +8,13 @@
         </div>
         <div class="col-md-9">
             <h2>@upload.Caption</h2>
+            <div class="checkbox">
+                @upload.ProfilePic
+                @Html.LabelFor(model => upload.ProfilePic, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.EditorFor(model => upload.ProfilePic)
+                @Html.ValidationMessageFor(model => upload.ProfilePic, "", new { @class = "text-danger" })
+            </div>
+
         </div>
     </div>
 }

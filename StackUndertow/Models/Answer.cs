@@ -12,6 +12,7 @@ namespace StackUndertow.Models
         public string QAnswer { get; set; }
         public DateTime Created { get; set; }
         public virtual ICollection<Vote> Votes { get; set; }
+        public virtual ICollection<ImageUpload> Images { get; set; }
 
         public int QuestionId { get; set; }
         [ForeignKey("QuestionId")]

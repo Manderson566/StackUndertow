@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using StackUndertow.Models;
 using Microsoft.AspNet.Identity;
+using System.IO;
 
 namespace StackUndertow.Controllers
 {
@@ -113,6 +114,36 @@ namespace StackUndertow.Controllers
                 return HttpNotFound();
             }
             return View(answer);
+        }
+        public ActionResult Upload()
+        {
+            var uploadViewModel = new ImageUploadViewModel();
+            return View(uploadViewModel);
+        }
+
+        [HttpPost]
+        public ActionResult Upload(ImageUploadViewModel formData)
+        {
+            var uploadedFile = Request.Files[0];
+            string filename = $"{DateTime.Now.Ticks}{uploadedFile.FileName}";
+            var serverPath = Server.MapPath(@"~\Uploads\AnswersScreenshot");
+            var fullPath = Path.Combine(serverPath, filename);
+            uploadedFile.SaveAs(fullPath);
+
+            var uploadModel = new ImageUpload
+            {
+                Caption = formData.Caption,
+                File = filename
+
+            };
+            db.ImageUploads.Add(uploadModel);
+            db.SaveChanges();
+            return View();
+        }
+
+        public ActionResult ImageSelect()
+        {
+            return View(db.ImageUploads);
         }
 
         // POST: Answer/Delete/5

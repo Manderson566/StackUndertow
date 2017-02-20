@@ -236,6 +236,10 @@
     <Compile Include="Migrations\201702192327495_addedOwnerIdToImagesAndProfilePicBool.Designer.cs">
       <DependentUpon>201702192327495_addedOwnerIdToImagesAndProfilePicBool.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201702200143358_addedIcollectionOfImagesInAnswers.cs" />
+    <Compile Include="Migrations\201702200143358_addedIcollectionOfImagesInAnswers.Designer.cs">
+      <DependentUpon>201702200143358_addedIcollectionOfImagesInAnswers.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Answer.cs" />
@@ -327,6 +331,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Uploads\AnswersScreenshot\" />
+    <Folder Include="Uploads\ProfilePic\" />
+    <Folder Include="Uploads\QuestionsScreenshot\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -360,6 +367,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201702192327495_addedOwnerIdToImagesAndProfilePicBool.resx">
       <DependentUpon>201702192327495_addedOwnerIdToImagesAndProfilePicBool.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702200143358_addedIcollectionOfImagesInAnswers.resx">
+      <DependentUpon>201702200143358_addedIcollectionOfImagesInAnswers.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

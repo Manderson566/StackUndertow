@@ -335,7 +335,7 @@ namespace StackUndertow.Controllers
         {
             var uploadedFile = Request.Files[0];
             string filename = $"{DateTime.Now.Ticks}{uploadedFile.FileName}";
-            var serverPath = Server.MapPath(@"~\Uploads");
+            var serverPath = Server.MapPath(@"~\Uploads\ProfilePic");
             var fullPath = Path.Combine(serverPath, filename);
             uploadedFile.SaveAs(fullPath);
 

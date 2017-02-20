@@ -52,8 +52,22 @@
                 @Html.ValidationMessageFor(model => model.QAnswer, "", new { @class = "text-danger" })
             </div>
         </div>
+        <div class="container">
+            <br />
+            <br />
+            <br />
+            @using (Html.BeginForm("Upload", "Answer", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                
+                <p>
+                    <input type="file" name="File" class="form-control" />
+                </p>
+                <p>
+                    <input type="submit" value="Upload File" class="btn btn-warning" />
+                </p>
+            }
+        </div>
 
-        
            @Html.HiddenFor(model => model.QuestionId, new { Value = ViewBag.QuestionId })
       
 
